@@ -102,28 +102,23 @@
           }
       }
 
-
-      $(document).ready(function () {
-          
-          $('body').bind('cut copy', function (e) {
-              e.preventDefault();
-          });
-
-          $("body").on("contextmenu",function(e){
-              return false;
-          });
-
-          //Disable part of page
-          // $("#id").on("contextmenu",function(e){
-          //     return false;
-          // });
-          //Disable part of page
-          // $('#id').bind('cut copy paste', function (e) {
-          //     e.preventDefault();
-          // });
-      });
-
     </script>
+    
+    <% if @controller.include? "users, submissions" %>
+      <% if current_user.id != 1 %>
+        <script type="text/javascript">
+          $(document).ready(function () {
+              
+              $('body').bind('cut copy', function (e) {
+                  e.preventDefault();
+              });
+
+              $("body").on("contextmenu",function(e){
+                  return false;
+              });
+          });
+        </script>
+    <% end end %>
 
   </body>
 </html>

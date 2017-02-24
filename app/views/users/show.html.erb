@@ -59,6 +59,21 @@
     	    </aside>
     	</div>
         <div class="primary col-md-8 col-sm-12 col-xs-12">
+            
+            <% if @user.id == 1 %>
+                <section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading">Only visible to ADMIN</h2>
+                        <div class="content" style="margin-bottom: 30px;">
+                            <ol>
+                                <li><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;Check responses of candidates:</li>
+                                <li><a href="/users" class="btn btn-success pull-right" style="margin-top: -30px;">View all responses&nbsp;&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+            <% end %>
+
             <section class="about section">
                 <div class="section-inner">
                     <h2 class="heading">Instructions</h2>
