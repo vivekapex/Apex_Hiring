@@ -1,0 +1,170 @@
+<%= stylesheet_link_tag "instructions.css" %>
+<div class="container sections-wrapper" style="padding-top: 45px;">
+    <div class="row">
+    	<div class="secondary col-md-4 col-sm-12 col-xs-12">
+    		<aside class="education aside section">
+				<div class="section-inner">
+					<h2 class="heading">Hi <%= @user.name %></h2>
+					<div class="content">
+						<div class="item">
+						    <h3 class="title"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Your Secure key for taking the test</h3>
+						    <h4 class="university">Token:&nbsp;<em><%= @user.user_token %></em></h4>
+						</div>
+						<div class="item">
+						    <h3 class="title"><i class="fa fa-envelope" aria-hidden="true"></i> Your registered email id</h3>
+						    <h4 class="university">Email: <em><%= @user.email %></em></h4>
+						</div>
+					</div>
+				</div>
+    		</aside>
+    	    <aside class="skills aside section">
+    	        <div class="section-inner">
+    	            <h2 class="heading">Skills required</h2>
+    	            <div class="content">
+    	                <p class="intro">Kind of expertise required in different areas to take the test are shown below.</p>
+    	                <div class="skillset">
+    	                    <div class="item">
+    	                        <h3 class="level-title">Ruby &amp; OOPS<span class="level-label" data-toggle="tooltip" data-placement="left" data-animation="true" title="You can use the tooltip to add more info...">Pro</span></h3>
+    	                        <div class="level-bar">
+    	                            <div class="level-bar-inner" data-level="80%">
+    	                            </div>
+    	                        </div>
+    	                    </div>
+    	                    <div class="item">
+    	                        <h3 class="level-title">Algorithms &amp; Data Structures<span class="level-label">Pro</span></h3>
+    	                        <div class="level-bar">
+    	                            <div class="level-bar-inner" data-level="80%">
+    	                            </div>
+    	                        </div>
+    	                    </div>
+    	                    <div class="item">
+    	                        <h3 class="level-title">Analytical &amp; Problem solving skills<span class="level-label">Expert</span></h3>
+    	                        <div class="level-bar">
+    	                            <div class="level-bar-inner" data-level="87%">
+    	                            </div>
+    	                        </div>
+    	                    </div>
+    	                    <div class="item">
+    	                        <h3 class="level-title">Ruby on Rails<span class="level-label">Senior</span></h3>
+    	                        <div class="level-bar">
+    	                            <div class="level-bar-inner" data-level="70%">
+    	                            </div>
+    	                        </div>
+    	                    </div>
+    	                </div>
+    	            </div>
+    	            <!--//content-->
+    	        </div>
+    	        <!--//section-inner-->
+    	    </aside>
+    	</div>
+        <div class="primary col-md-8 col-sm-12 col-xs-12">
+            <section class="about section">
+                <div class="section-inner">
+                    <h2 class="heading">Instructions</h2>
+                    <div class="content">
+                    	<ol>
+                    	    <li><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;This contest is a Rated contest and open for All.</li>
+                    	    <li><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;There are 4 Programming problems in this challenge.</li>
+                    	    <li><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;Please refrain from using online compiling tools which expose your code publicly. You are responsible for making sure others do not access your code. We take plagiarism seriously and do not entertain any activity which is against the spirit of competition.</li>
+                    	</ol>
+                    </div>
+                    <!--//content-->
+                </div>
+                <!--//section-inner-->
+            </section>
+            <section class="experience section">
+                <div class="section-inner">
+                    <h2 class="heading">General Guidelines</h2>
+                    <div class="content">
+                        <ol>
+						    <li><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;For the programming questions in the test, you need to choose one language from the given list and attempt.</li>
+						    <li><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;All inputs for the programming problem are from STDIN and output to STDOUT.</li>
+						    <li><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;To understand more about the judge environment, time limits, etc. you can read the <a href="https://www.hackerearth.com/judge/">FAQ</a> here.</li>
+						    <li><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;Programming questions have a 'Compile and Test' option where you can run your solution against sample test cases, before submitting.</li>
+						    <li><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;You can submit solution for a programming problem as many times as you want. For subjective and objective problems you can change your answer any number of times.</li>
+						    <li><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;Please DO NOT use any Online Development Environment which exposes your code to the public. We take plagiarism seriously and do not entertain any activity which is against the spirit of learning/ programming. Violations can lead to account suspension or permanent blacklisting from Hackerearth.</li>
+						</ol>
+                    </div>
+                    <!--//content-->
+                </div>
+                <!--//section-inner-->
+            </section>
+            <!--//section-->
+        </div>
+    </div>
+    <!--//row-->
+    <div class="row">
+    	<div class="primary col-md-12 col-sm-12 col-xs-12">
+    		<section class="about section">
+    		    <div class="section-inner">
+    		        <h2 class="heading">Start test</h2>
+    		        <div class="content">
+    		   			<form class="form-inline">
+							<div class="form-group">
+								<label class="sr-only">Secure key</label>
+								<p class="form-control-static">Input Secure key:&nbsp;&nbsp;&nbsp;</p>
+							</div>
+							<div class="form-group mx-sm-3">
+								<label for="user_secure_token" class="sr-only">Secure key</label>
+								<input type="text" class="form-control" id="user_secure_token" placeholder="Secure key">
+							</div>
+							<button type="button" id="secure_submit" class="btn btn-primary" style="margin-left: 15px;" onclick="startSecureTest();">Start test</button>
+    		   			</form>
+    		   			<input type="hidden" name="" value="<%= @user.id %>" id="user_id">
+    		        </div>
+    		    </div>
+    		</section>
+	    </div>
+    </div>
+</div>
+<!-- custom js -->
+<%= javascript_include_tag "instructions.js" %>
+<script type="text/javascript">
+	function startSecureTest() {
+		var id = parseInt($("#user_id").val());
+		var secure = $("#user_secure_token").val();
+		var secure_len = $("#user_secure_token").val().trim().length;
+		if(secure_len != 12) {
+			alert("Please check your secure key");
+			return;
+		}
+		var formData = {
+			"user_id" : id,
+			"secure_key" : secure.trim(),
+		}
+		$.ajax({
+			method: "GET",
+			url: "/api/v1/users/validate_user_token.json",
+			async: true,
+			data: formData,
+			success: function(data) {
+				if(data["success"]) {
+                    var sub_id = parseInt(data['data']);
+					alert(data["message"]);
+					window.location.href = "/users/"+id+"/submissions/"+sub_id;
+				} else {
+					alert(data["message"]);
+					// window.location.reload();
+				}
+			}
+		});
+	}
+
+    var myApp;
+    myApp = myApp || (function () {
+        var pleaseWaitDiv = $('<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false"><div class="modal-header"><h1>Processing...</h1></div><div class="modal-body"><div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div></div></div>');
+        return {
+            showPleaseWait: function() {
+                pleaseWaitDiv.modal();
+            },
+            hidePleaseWait: function () {
+                pleaseWaitDiv.modal('hide');
+            },
+
+        };
+    })();
+
+    // use it like myApp.showPleaseWait(); to show the modal
+    // use it like myApp.hidePleaseWait(); to hide the modal
+</script>

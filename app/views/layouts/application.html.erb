@@ -2,15 +2,105 @@
 <html>
   <head>
     <title>ApexHiring</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-8949442581d2cae6572d2d5f2043baa4.ico">
+    <meta charset="UTF-8">
     <%= csrf_meta_tags %>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/jquery.countdown.css">
+    <style>
+      body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+      .w3-navbar,h1,button {font-family: "Montserrat", sans-serif}
+      .fa-anchor,.fa-coffee {font-size:200px}
+      .apex_color {
+        background-color: #fff !important;
+      }
+      .sign_apex:hover{
+        background-color: #eee !important;
+      }
+      .fa-area-chart {
+        font-size: 200px;
+      }
+      .apex_chart_color{
+        color: #22A7D3;
+      }
+    </style>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <% @controller =  request.original_fullpath.split('/') %>
   <body>
-  	<!-- <p class="notice"><%#= notice %></p> -->
-  	<!-- <p class="alert"><%#= alert %></p> -->
+    <!-- Navbar -->
+    <div class="w3-top" style="position: relative;">
+      <div class="apex_color w3-bar w3-card-2 w3-left-align w3-large">
+        <a class="w3-bar-item w3-hide-medium w3-hide-large w3-opennav w3-right w3-padding-large w3-hover-white w3-large" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+        <a href="javascript:void(0);" class="w3-bar-item w3-padding-large w3-white" style="padding: 0px !important;"><img src="/assets/apex_logo_small.svg" style="height: 61px;margin-top:-12px;"></a>
+        <% if (@controller[1] != 'users') %>
+          <a href="/" style="color: #22A7D3;" class="sign_apex w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+          <a href="/signup" style="color: #22A7D3;" class="sign_apex w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Register</a>
+        <% else %>
+          <% if @controller.include? "submissions" %>
+          <% else %>
+            <a href="javascript:void(0);" style="color: #22A7D3;" class="sign_apex w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" onclick="signOut();">Log Out</a>
+          <% end %>
+        <% end %>
+      </div>
+
+      <!-- Navbar on small screens -->
+      <div id="navDemo" class="w3-navblock w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+        <% if (@controller[1] != 'users') %>
+          <a href="/" style="color: #22A7D3;" class="w3-padding-large sign_apex">Home</a>
+          <a class="w3-padding-large sign_apex" style="color: #22A7D3;" href="/signup">Register</a>
+        <% else %>
+          <% if @controller.include? "submissions" %>
+          <% else %>
+            <a href="javascript:void(0);" style="color: #22A7D3;" class="sign_apex w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" onclick="signOut();">Log Out</a>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
     <%= yield %>
+    
+    <!-- Footer -->
+    <footer class="w3-container w3-center" style="padding: 0px;"> 
+      <div class="w3-container w3-black w3-center w3-opacity w3-padding-16">
+          <h5 class="w3-margin w3-xsmall" style="color: #fff;">Apex Financial Technology, 86-90 Paul Street, London EC2A 4NE, info@apexft.com, CN 09621848</h5>
+      </div> 
+    </footer>
+
+    <script type="text/javascript">
+      
+      function signOut()
+      {
+        $.ajax({
+          method: "POST",
+          url: "/api/v1/users/sign_out_user.json",
+          async: false,
+          success: function(data) {
+
+           alert("You've been logged out.");
+          }
+        }); 
+      }
+
+      // Used to toggle the menu on small screens when clicking on the menu button
+      function myFunction() {
+          var x = document.getElementById("navDemo");
+          if (x.className.indexOf("w3-show") == -1) {
+              x.className += " w3-show";
+          } else { 
+              x.className = x.className.replace(" w3-show", "");
+          }
+      }
+
+    </script>
+
   </body>
 </html>

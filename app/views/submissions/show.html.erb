@@ -1,0 +1,449 @@
+<%= stylesheet_link_tag "submissions.css" %>
+<style type="text/css">
+    .is-countdown {
+        border: none !important;
+        background: #fff !important;
+    }
+</style>
+<div class="container" style="margin-bottom: 81px;">
+    <div class="row" style="background-color: #fff; margin-top: 5px;">
+        <section>
+            <div class="wizard">
+                <div class="wizard-inner">
+                    <div class="col-md-12" style="margin-bottom: 25px;">
+                        <div class="col-md-9">
+                            <p><b><center>Please keep track of your time here</center></b></p>
+                        </div>
+                        <div class="col-md-3">
+                            <span style="font-size: 20px;"><em><span id="running_timer_count"></span></em></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="row" style="margin-top: -30px;">
+        <section>
+            <div class="wizard">
+                <div class="wizard-inner">
+                    <div class="connecting-line"></div>
+                    <ul class="nav nav-tabs" role="tablist">
+
+                        <li role="presentation" class="active">
+                            <a href="#question1" data-toggle="tab" aria-controls="question1" role="tab" title="Question 1">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li role="presentation" class="disabled">
+                            <a href="#question2" data-toggle="tab" aria-controls="question2" role="tab" title="Question 2">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li role="presentation" class="disabled">
+                            <a href="#question3" data-toggle="tab" aria-controls="question3" role="tab" title="Question 3">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li role="presentation" class="disabled">
+                            <a href="#question4" data-toggle="tab" aria-controls="question4" role="tab" title="Question 4">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li role="presentation" class="disabled">
+                            <a href="#summary" data-toggle="tab" aria-controls="summary" role="tab" title="Responses">
+                                <span class="round-tab">
+                                    <!-- <i class="glyphicon glyphicon-stats"></i> -->
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <!-- <li role="presentation" class="disabled">
+                            <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                </span>
+                            </a>
+                        </li> -->
+                    </ul>
+                </div>
+
+                <form role="form">
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel" id="question1">
+                            <div class="question1">
+                                <div class="">
+                                    <div class="col-md-12">
+                                        <label for="question1">Question 1: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_one %></p>
+                                        <label for="response1">Your code goes here: </label>
+                                        <p style="margin-bottom: 0px;">&nbsp;</p>
+                                        <textarea class="form-control" rows="5" id="response1"><%= @submission.response_one %></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 10px;">
+                                <ul class="list-inline pull-right" style="margin-bottom: 25px;">
+                                    <li><button type="button" id="save1" onclick="saveResponse(1, $(this));" class="btn btn-primary next-step">Save and next</button></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" role="tabpanel" id="question2">
+                            <div class="question2">
+                                <div class="">
+                                    <div class="col-md-12">
+                                        <label for="question2">Question 2: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_two %></p>
+                                        <label for="response2">Your code goes here: </label>
+                                        <p style="margin-bottom: 0px;">&nbsp;</p>
+                                        <textarea class="form-control" rows="5" id="response2"><%= @submission.response_two %></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 10px;">
+                                <ul class="list-inline pull-right" style="margin-bottom: 25px;">
+                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                    <li><button type="button" id="save2" onclick="saveResponse(2, $(this));" class="btn btn-primary next-step">Save and next</button></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" role="tabpanel" id="question3">
+                            <div class="question3">
+                                <div class="">
+                                    <div class="col-md-12">
+                                        <label for="question3">Question 3: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_three %></p>
+                                        <label for="response3">Your code goes here: </label>
+                                        <p style="margin-bottom: 0px;">&nbsp;</p>
+                                        <textarea class="form-control" rows="5" id="response3"><%= @submission.response_three %></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 10px;">
+                                <ul class="list-inline pull-right" style="margin-bottom: 25px;">
+                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                    <li><button type="button" id="save3" onclick="saveResponse(3, $(this));" class="btn btn-primary next-step">Save and next</button></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" role="tabpanel" id="question4">
+                            <div class="question4">
+                                <div class="">
+                                    <div class="col-md-12">
+                                        <label for="question4">Question 4: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_four %></p>
+                                        <label for="response4">Your code goes here: </label>
+                                        <p style="margin-bottom: 0px;">&nbsp;</p>
+                                        <textarea class="form-control" rows="5" id="response4"><%= @submission.response_four %></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 10px;">
+                                <ul class="list-inline pull-right" style="margin-bottom: 25px;">
+                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                    <li><button type="button" id="save4" onclick="saveResponse(4, $(this));" class="btn btn-primary next-step">Save and next</button></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" role="tabpanel" id="summary">
+                            <div class="summary">
+                                <div class="">
+                                    <div class="col-md-12">
+                                        <label for="response1">Response 1: </label>
+                                        <p id="response_summary_one" style="margin-bottom: 25px;"><%= @submission.response_one %></p>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="response2">Response 2: </label>
+                                        <p id="response_summary_two" style="margin-bottom: 25px;"><%= @submission.response_two %></p>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="response3">Response 3: </label>
+                                        <p id="response_summary_three" style="margin-bottom: 25px;"><%= @submission.response_three %></p>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="response4">Response 4: </label>
+                                        <p id="response_summary_four" style="margin-bottom: 25px;"><%= @submission.response_four %></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 10px;">
+                                <ul class="list-inline pull-right" style="margin-bottom: 25px;">
+                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                    <li><button type="button" id="summary_save" onclick="saveFinalResponse();" class="btn btn-primary next-step">Cool, I'm good to go</button></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- <div class="tab-pane" role="tabpanel" id="complete">
+                            <div class="complete">
+                                <div class="">
+                                    <div class="col-md-12">
+                                        <label for="complete_paragraph">Complete: </label>
+                                        <p style="margin-bottom: 25px;">The size of the arrays is fixed: So we must know the upper limit on the number of elements in advance. Also, generally, the allocated memory is equal to the upper limit irrespective of the usage, and in practical uses, upper limit is rarely reached.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 10px;">
+                                <ul class="list-inline pull-right" style="margin-bottom: 25px;">
+                                    <li><button type="button" id="close_logout" class="btn btn-primary next-step">Close and logout</button></li>
+                                </ul>
+                            </div>
+                        </div> -->
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+<input type="hidden" name="" value="<%= @user.id %>" id="subm_user_id" >
+<input type="hidden" name="" value="<%= @submission.id %>" id="subm_id" >
+<input type="hidden" name="" value="<%= @submission.timer_countdown %>" id="timer_countdown" >
+<input type="hidden" name="" value="<%= @submission.last_saved_timer %>" id="last_saved_timer" >
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        var time = $("#timer_countdown").val().split("-");
+        var year = parseInt(time[0]);
+        var month = parseInt(time[1]);
+        var day = parseInt(time[2].split(" ")[0]);
+        var hour = parseInt(time[2].split(" ")[1].split(":")[0]); // adding 5 hours for GMT
+        var minute = parseInt(time[2].split(" ")[1].split(":")[1]);
+        var seconds = parseInt(time[2].split(" ")[1].split(":")[2]);
+        var till_time = new Date(year, month-1, day, hour, minute, seconds);
+        till_time = new Date(till_time.getTime() + 19800000) ; // 5.5*60*60*1000 -> 19800000
+        // till_time = new Date(2017, 2-1, 24, 11, 33, 31) ; // test case
+        $('#running_timer_count').empty().countdown({
+            until: till_time,
+            format: 'HMS'
+        });
+    });
+
+    function lastTimeSaveHelper() {
+        var time = $("#last_saved_timer").val();
+        var timeArr = time.split(" ");
+        var timeFinal = timeArr[0]+" "+timeArr[1];
+        var d = new Date(timeFinal);
+
+        var last_time = $("#running_timer_count").text(); // running timer
+        var min_temp = last_time.split("Minutes")[0]; // running time minute calculation
+        var sec_temp = last_time.split("Minutes")[1]; // running time seconds calculation
+        var min = parseInt(min_temp.split("Hours")[1]); // minutes remining
+        var sec = parseInt(sec_temp.split("Seconds")[0]); // seconds remining
+        var total_seconds = 0;
+        if(min || sec) {
+            total_seconds = (60*60 - (min*60+sec))*1000 // total time spent in milli_seconds
+        } else {
+            total_seconds = 0 // timer ended
+        }
+
+        var final = new Date(d.getTime() + total_seconds).toString();
+        var finalArr = final.split(" ");
+        var returnFinal = finalArr[0]+" "+finalArr[1]+" "+finalArr[2]+" "+finalArr[3]+" "+finalArr[4];
+        return returnFinal;
+    }
+
+    function saveResponse(response_num, control) {
+        // textarea of responses having id --> response1, response2, response3, response4
+        var response = $("#response"+response_num).val();
+        if(response.trim().length == 0) {
+            response = "You have not submitted any response";
+        }
+        var userid = parseInt($("#subm_user_id").val());
+        var submid = parseInt($("#subm_id").val());
+        var last_time = lastTimeSaveHelper();
+        var formData = {
+            flag: response_num,
+            subm_id : submid,
+            user_id : userid,
+            response : response,
+            lastTime: last_time,
+        };
+
+        $.ajax({
+            method: "GET",
+            url: "/api/v1/users/save_user_response.json",
+            async: true,
+            data: formData,
+            success: function(data) {
+                $("#last_saved_timer").val(data["data"]);
+                $("#response_summary_one").text(data["data_responses"]["response_one"]);
+                $("#response_summary_two").text(data["data_responses"]["response_two"]);
+                $("#response_summary_three").text(data["data_responses"]["response_three"]);
+                $("#response_summary_four").text(data["data_responses"]["response_four"]);
+                // $("#timer_countdown").val(data["data"]);
+            }
+        });
+    }
+
+    function saveFinalResponse() {
+        var userid = parseInt($("#subm_user_id").val());
+        var submid = parseInt($("#subm_id").val());
+        var last_time = lastTimeSaveHelper();
+        var formData = {
+            subm_id : submid,
+            user_id : userid,
+            lastTime: last_time,
+            response_one: $("#response_summary_one").text().trim(),
+            response_two: $("#response_summary_two").text().trim(),
+            response_three: $("#response_summary_three").text().trim(),
+            response_four: $("#response_summary_four").text().trim(),
+        };
+        $.ajax({
+            method: "GET",
+            url: "/api/v1/users/save_final_response.json",
+            async: true,
+            data: formData,
+            success: function(data) {
+
+            }
+        });
+    }
+
+    var ajax_interval = function() {
+        if($("#running_timer_count").text().toLowerCase() == "0hours0minutes0seconds") {
+            $.ajax({
+              method: "POST",
+              url: "/api/v1/users/sign_out_user.json",
+              async: false,
+              success: function(data) {
+
+               alert("You're responses have been submitted. Thank you!");
+              }
+            }); 
+        }
+
+        // textarea of responses having id --> response1, response2, response3, response4
+        var response = "";
+        var response_num = 0;
+        if($("#question1").hasClass("active")) {
+            response = $("#response1").val();
+            response_num = 1;
+        } else if($("#question2").hasClass("active")) {
+            response = $("#response2").val();
+            response_num = 2;
+        } else if($("#question3").hasClass("active")) {
+            response = $("#response3").val();
+            response_num = 3;
+        } else if($("#question4").hasClass("active")) {
+            response = $("#response4").val();
+            response_num = 4;
+        }
+        if(response.trim().length == 0) {
+            response = "You have not submitted any response";
+        }
+        var userid = parseInt($("#subm_user_id").val());
+        var submid = parseInt($("#subm_id").val());
+        var last_time = lastTimeSaveHelper();
+        var formData = {
+            flag: response_num,
+            subm_id : submid,
+            user_id : userid,
+            response : response,
+            lastTime: last_time,
+        };
+
+        $.ajax({
+            method: "GET",
+            url: "/api/v1/users/save_user_response.json",
+            async: true,
+            data: formData,
+            success: function(data) {
+                $("#last_saved_timer").val(data["data"]);
+                $("#response_summary_one").text(data["data_responses"]["response_one"]);
+                $("#response_summary_two").text(data["data_responses"]["response_two"]);
+                $("#response_summary_three").text(data["data_responses"]["response_three"]);
+                $("#response_summary_four").text(data["data_responses"]["response_four"]);
+            }
+        });
+    }
+
+    setInterval(ajax_interval, 5000);
+
+
+    $(document).ready(function () {
+        //Initialize tooltips
+        $('.nav-tabs > li a[title]').tooltip();
+        
+        //Wizard
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+            var $target = $(e.target);
+        
+            if ($target.parent().hasClass('disabled')) {
+                return false;
+            }
+        });
+
+        $(".next-step").click(function (e) {
+
+            var $active = $('.wizard .nav-tabs li.active');
+            $active.next().removeClass('disabled');
+            nextTab($active);
+
+        });
+        $(".prev-step").click(function (e) {
+
+            var $active = $('.wizard .nav-tabs li.active');
+            prevTab($active);
+
+        });
+    });
+
+    function nextTab(elem) {
+        $(elem).next().find('a[data-toggle="tab"]').click();
+    }
+    function prevTab(elem) {
+        $(elem).prev().find('a[data-toggle="tab"]').click();
+    }
+
+
+    //according menu
+
+    $(document).ready(function()
+    {
+        //Add Inactive Class To All Accordion Headers
+        $('.accordion-header').toggleClass('inactive-header');
+        
+        //Set The Accordion Content Width
+        var contentwidth = $('.accordion-header').width();
+        $('.accordion-content').css({});
+        
+        //Open The First Accordion Section When Page Loads
+        $('.accordion-header').first().toggleClass('active-header').toggleClass('inactive-header');
+        $('.accordion-content').first().slideDown().toggleClass('open-content');
+        
+        // The Accordion Effect
+        $('.accordion-header').click(function () {
+            if($(this).is('.inactive-header')) {
+                $('.active-header').toggleClass('active-header').toggleClass('inactive-header').next().slideToggle().toggleClass('open-content');
+                $(this).toggleClass('active-header').toggleClass('inactive-header');
+                $(this).next().slideToggle().toggleClass('open-content');
+            }
+            
+            else {
+                $(this).toggleClass('active-header').toggleClass('inactive-header');
+                $(this).next().slideToggle().toggleClass('open-content');
+            }
+        });
+        
+        return false;
+    });
+
+</script>

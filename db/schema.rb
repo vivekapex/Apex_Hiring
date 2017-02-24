@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221104339) do
+ActiveRecord::Schema.define(version: 20170223104346) do
+
+  create_table "submissions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "question_one"
+    t.text     "response_one",     default: "You have not submitted any response"
+    t.text     "question_two"
+    t.text     "response_two",     default: "You have not submitted any response"
+    t.text     "question_three"
+    t.text     "response_three",   default: "You have not submitted any response"
+    t.text     "question_four"
+    t.text     "response_four",    default: "You have not submitted any response"
+    t.datetime "start_timer"
+    t.datetime "end_timer"
+    t.datetime "timer_countdown"
+    t.boolean  "finished"
+    t.datetime "created_at",                                                       null: false
+    t.datetime "updated_at",                                                       null: false
+    t.datetime "last_saved_timer"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -26,6 +45,9 @@ ActiveRecord::Schema.define(version: 20170221104339) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
+    t.string   "mobile"
+    t.string   "user_token"
+    t.boolean  "token_used"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
