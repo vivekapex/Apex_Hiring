@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
 
   validates :name, presence: true
-  validates :mobile, presence: true, length: { maximum: 10, minimum: 10 }
+  validates :mobile, :numericality => true, presence: true, length: { maximum: 10, minimum: 10 }
 
   after_create :generate_user_token
   has_many :submissions, :dependent => :destroy
