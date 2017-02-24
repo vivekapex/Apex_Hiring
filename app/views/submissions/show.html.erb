@@ -69,14 +69,6 @@
                                 </span>
                             </a>
                         </li>
-
-                        <!-- <li role="presentation" class="disabled">
-                            <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
-                                <span class="round-tab">
-                                    <i class="glyphicon glyphicon-ok"></i>
-                                </span>
-                            </a>
-                        </li> -->
                     </ul>
                 </div>
 
@@ -87,7 +79,14 @@
                                 <div class="">
                                     <div class="col-md-12">
                                         <label for="question1">Question 1: </label>
-                                        <p style="margin-bottom: 25px;"><%= @submission.question_one %></p>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_one.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[0] %></p>
+
+                                        <label for="question1">Input: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_one.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[1].split("$$$")[0] %></p>
+                                        
+                                        <label for="question1">Output: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_one.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[1].split("$$$")[1] %></p>
+
                                         <label for="response1">Your code goes here: </label>
                                         <p style="margin-bottom: 0px;">&nbsp;</p>
                                         <textarea class="form-control" rows="5" id="response1"><%= @submission.response_one %></textarea>
@@ -106,7 +105,14 @@
                                 <div class="">
                                     <div class="col-md-12">
                                         <label for="question2">Question 2: </label>
-                                        <p style="margin-bottom: 25px;"><%= @submission.question_two %></p>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_two.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[0] %></p>
+
+                                        <label for="question2">Input: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_two.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[1].split("$$$")[0] %></p>
+                                        
+                                        <label for="question2">Output: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_two.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[1].split("$$$")[1] %></p>
+
                                         <label for="response2">Your code goes here: </label>
                                         <p style="margin-bottom: 0px;">&nbsp;</p>
                                         <textarea class="form-control" rows="5" id="response2"><%= @submission.response_two %></textarea>
@@ -126,7 +132,14 @@
                                 <div class="">
                                     <div class="col-md-12">
                                         <label for="question3">Question 3: </label>
-                                        <p style="margin-bottom: 25px;"><%= @submission.question_three %></p>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_three.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[0] %></p>
+
+                                        <label for="question3">Input: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_three.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[1].split("$$$")[0] %></p>
+                                        
+                                        <label for="question3">Output: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_three.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[1].split("$$$")[1] %></p>
+
                                         <label for="response3">Your code goes here: </label>
                                         <p style="margin-bottom: 0px;">&nbsp;</p>
                                         <textarea class="form-control" rows="5" id="response3"><%= @submission.response_three %></textarea>
@@ -146,7 +159,14 @@
                                 <div class="">
                                     <div class="col-md-12">
                                         <label for="question4">Question 4: </label>
-                                        <p style="margin-bottom: 25px;"><%= @submission.question_four %></p>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_four.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[0] %></p>
+
+                                        <label for="question4">Input: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_four.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[1].split("$$$")[0] %></p>
+                                        
+                                        <label for="question4">Output: </label>
+                                        <p style="margin-bottom: 25px;"><%= @submission.question_four.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[1].split("$$$")[1] %></p>
+
                                         <label for="response4">Your code goes here: </label>
                                         <p style="margin-bottom: 0px;">&nbsp;</p>
                                         <textarea class="form-control" rows="5" id="response4"><%= @submission.response_four %></textarea>
@@ -189,22 +209,6 @@
                                 </ul>
                             </div>
                         </div>
-
-                        <!-- <div class="tab-pane" role="tabpanel" id="complete">
-                            <div class="complete">
-                                <div class="">
-                                    <div class="col-md-12">
-                                        <label for="complete_paragraph">Complete: </label>
-                                        <p style="margin-bottom: 25px;">The size of the arrays is fixed: So we must know the upper limit on the number of elements in advance. Also, generally, the allocated memory is equal to the upper limit irrespective of the usage, and in practical uses, upper limit is rarely reached.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="padding: 10px;">
-                                <ul class="list-inline pull-right" style="margin-bottom: 25px;">
-                                    <li><button type="button" id="close_logout" class="btn btn-primary next-step">Close and logout</button></li>
-                                </ul>
-                            </div>
-                        </div> -->
                         <div class="clearfix"></div>
                     </div>
                 </form>
@@ -445,5 +449,5 @@
         
         return false;
     });
-
+    
 </script>

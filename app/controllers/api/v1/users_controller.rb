@@ -79,11 +79,11 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 					# create a new submission for this user
 					_user.update(token_used: true)
 					if Submission.find_by_user_id("#{params[:user_id]}").nil?
-						_q1 = EASY_QUESTIONS_ARRAY.shuffle.first
-						_med = MEDIUM_QUESTIONS_ARRAY.shuffle
+						_q1 = EASY_HASH.to_a.shuffle.to_h.first
+						_med = MEDIUM_HASH.to_a.shuffle.to_h.first(2)
 						_q2 = _med.first
-						_q3 = _med.second
-						_q4 = HARD_QUESTIONS_ARRAY.shuffle.first
+						_q3 = _med.last
+						_q4 = HARD_HASH.to_a.shuffle.to_h.first
 						_start = Time.now
 						# _end = Time.now + 60*60 # 60 minutes
 						_countdown = Time.now + 60*60 # 60 minutes
