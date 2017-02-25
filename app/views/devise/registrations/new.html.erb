@@ -22,8 +22,8 @@
       <p class="contact"><%= f.label :password_confirmation do %>Password confirmation<span class="required">&nbsp;*</span><%end%></p>
       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password confirmation *", class: "user_confirm_password", required: "" %>
   
-      <p class="contact"><%= f.label :mobile do %>Mobile<span class="required">&nbsp;*</span><%end%></p>
-      <%= f.text_field :mobile, autofocus: true, placeholder: "Mobile *", class: "user_mobile", required: "" %>
+      <p class="contact"><%= f.label :mobile do %>Mobile<span class="required">&nbsp;* (Enter 10 digit number only)</span><%end%></p>
+      <%= f.text_field :mobile, :min=>10, :max=>10, autofocus: true, placeholder: "Mobile *", class: "user_mobile", required: "" %>
       <br>
 
       <div class="actions" style="text-align: center;">

@@ -141,7 +141,10 @@
 		var secure = $("#user_secure_token").val();
 		var secure_len = $("#user_secure_token").val().trim().length;
 		if(secure_len != 12) {
-			alert("Please check your secure key");
+            $(".secure_key_len").modal("show");
+            setInterval(function() {
+                $(".secure_key_len").modal("hide");
+            }, 2000);
 			return;
 		}
 		var formData = {
@@ -156,11 +159,19 @@
 			success: function(data) {
 				if(data["success"]) {
                     var sub_id = parseInt(data['data']);
-					alert(data["message"]);
-					window.location.href = "/users/"+id+"/submissions/"+sub_id;
+                    $(".common_start_test").find("#common_start_test_message").text(data["message"]);
+                    $(".common_start_test").modal("show");
+                    setInterval(function() {
+                        $(".common_start_test").modal("hide");
+                        window.location.href = "/users/"+id+"/submissions/"+sub_id;
+                    }, 3000);
 				} else {
-					alert(data["message"]);
-					// window.location.reload();
+                    $(".common_start_test").find("#common_start_test_message").text(data["message"]);
+                    $(".common_start_test").modal("show");
+                    setInterval(function() {
+                        $(".common_start_test").modal("hide");
+                        window.location.reload();
+                    }, 3000);
 				}
 			}
 		});

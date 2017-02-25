@@ -4,7 +4,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 
 	def sign_out_user
 	   sign_out @user
-	   render :js => "window.location = '/'"
+	   # render :js => "window.location = '/'"
 	end
 
 	def save_final_response
@@ -20,7 +20,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 								last_saved_timer: _last, finished: true, end_timer: _last)
 				
 				sign_out_user
-
+				render :js => "window.location = '/'"
 				# render json:
 				# {
 				# 	success: true,

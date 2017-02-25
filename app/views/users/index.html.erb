@@ -29,28 +29,28 @@
 										<label for="question1">Question one: </label>
 										<p style="margin-bottom: 5px;"><%= user_subm.question_one.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[0] %></p>
 										<label for="question1">Response one: </label>
-										<p style="margin-bottom: 25px;"><%= user_subm.response_one %></p>
+										<pre style="margin-bottom: 25px;"><p style="padding: 5px;"><%= user_subm.response_one %></p></pre>
 									</div>
 
 									<div style="background:antiquewhite; padding:10px 25px 10px 25px;">
 										<label for="question2">Question two: </label>
 										<p style="margin-bottom: 5px;"><%= user_subm.question_two.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[0] %></p>
 										<label for="question2">Response two: </label>
-										<p style="margin-bottom: 25px;"><%= user_subm.response_two %></p>
+										<pre style="margin-bottom: 25px;"><p style="padding: 5px;"><%= user_subm.response_two %></p></pre>
 									</div>
 
 									<div style="background:azure; padding:10px 25px 10px 25px;">
 										<label for="question3">Question three: </label>
 										<p style="margin-bottom: 5px;"><%= user_subm.question_three.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[0] %></p>
 										<label for="question3">Response three: </label>
-										<p style="margin-bottom: 25px;"><%= user_subm.response_three.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[0] %></p>
+										<pre style="margin-bottom: 25px;"><p style="padding: 5px;"><%= user_subm.response_three.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[0] %></p></pre>
 									</div>
 
-									<div style="background:whitesmoke; padding:10px 25px 10px 25px;">
+									<div style="background:beige; padding:10px 25px 10px 25px;">
 										<label for="question4">Question four: </label>
 										<p style="margin-bottom: 5px;"><%= user_subm.question_four.gsub("[","").gsub("]","").gsub("\"","").split("@@@,")[0] %></p>
 										<label for="question4">Response four: </label>
-										<p style="margin-bottom: 25px;"><%= user_subm.response_four %></p>
+										<pre style="margin-bottom: 25px;"><p style="padding: 5px;"><%= user_subm.response_four %></p></pre>
 									</div>
 								</div>
 							<% end %>

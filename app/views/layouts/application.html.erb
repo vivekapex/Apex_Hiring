@@ -30,6 +30,17 @@
       .apex_chart_color{
         color: #22A7D3;
       }
+
+      .modal-body {
+        /*background-color: #0f8845;*/
+        background-color: #22A7D3;
+        color: #fff !important;
+      }
+      .modal-body h1, .modal-body h2, .modal-body h3, .modal-body h4, .modal-body h5, .modal-body h6, .modal-body p {
+        color: #fff !important;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+      }
     </style>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -77,6 +88,37 @@
         </div> 
       </footer>
     <% end %>
+
+      <div class="modal fade logoutmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h4>You've been logged out.</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade secure_key_len" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h4>Please check your secure key.</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade common_start_test" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h4 id="common_start_test_message"></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <script type="text/javascript">
       
       function signOut()
@@ -86,8 +128,8 @@
           url: "/api/v1/users/sign_out_user.json",
           async: false,
           success: function(data) {
-
-           alert("You've been logged out.");
+            $('.logoutmodal').modal('show');
+            setInterval(function(){ window.location.href = "/"; }, 2000);
           }
         }); 
       }
@@ -103,8 +145,7 @@
       }
 
     </script>
-    
-    <% if @controller.include? "users, submissions" %>
+    <% if @controller.include? "users" or @controller.include? "submissions" %>
       <% if current_user.id != 1 %>
         <script type="text/javascript">
           $(document).ready(function () {
@@ -119,6 +160,12 @@
           });
         </script>
     <% end end %>
+
+	<!-- <script type="text/javascript">
+		window.onbeforeunload = function(){
+		  return 'Are you sure you want to leave?';
+		};
+	</script> -->
 
   </body>
 </html>
